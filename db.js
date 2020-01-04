@@ -9,7 +9,7 @@ const db = mysql.createConnection({
     database : 'Aitechnodemysql'
 });
 
-//connect 
+//connect
 db.connect((err) =>{
     if(err){
         throw err;
@@ -17,7 +17,7 @@ db.connect((err) =>{
     console.log('Mysql Connected...')
 });
 
-db.query = util.promisify(db.query); 
+db.query = util.promisify(db.query);
 
 
 export default db;

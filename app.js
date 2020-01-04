@@ -1,12 +1,20 @@
 import express from 'express';
+import bodyParser from 'body-parser';
+var cors = require('cors')
 // import mysql from 'mysql';
 import pageRouter from './routes/pages';
 import path from 'path';
 import db from './db';
 
+// let config = JSON.parse(fs.readFileSync('config.json'));
+
+
+
 const app = express();
+app.use(cors())
 
 app.use(express.urlencoded({extended:false}));
+app.use(bodyParser.json())
 
 //server static files
 app.use(express.static(path.join(__dirname, 'public')));

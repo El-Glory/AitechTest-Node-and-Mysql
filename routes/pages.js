@@ -1,7 +1,10 @@
 import express from 'express';
 // import User from '../core/user';
 import db from '../db';
+import {pinGenerator} from '../pin-generator';
+import {sendMail} from '../mail.js';
 const router = express.Router();
+import nodemailer from 'nodemailer';
 
 // const user = new User();
 
@@ -11,38 +14,48 @@ router.get('/', (req, res, next) =>{
 })
 
 // Post Entry Data
-router.post('/login',(req, res, next) => {
-    // let userInput = {
-    //     name: req.body.name,name
-    //     email:req.body.email,
-    //     phone: req.body.phone
-    // };
-    // user.create(userInput, function(lastId){
-    //     if(lastId){
-    //         res.send('Welcome' + userInput.name);
-    //     }else{
-    //         console.log('Error')
-    //     }
-    // })
-
-    // db.query('INSERT INTO users SET ?', req.body, function(err, result){
-    //     res.send('Welcome');
-    // })
+router.post('/collector',(req, res, next) => {
+    console.log(req.body);
+    let pin = pinGenerator();
+    // console.log(pins);
     let sql = `INSERT INTO users(name, email, phone, pin) VALUES (?, ?, ?, ?)`;
     let user = [
         req.body.name,
-        // req.body.email,
+        req.body.email,
         req.body.phone,
-        req.body.pin
+        pin
     ]
 
     db.query(sql, user, (err, results, fields) =>{
         if(err){
             return console.error(err.message);
         }else{
-            res.send('Welcome');
+            let mail = sendMail(req.body.email, pin);
+            return res.status(200).json({ message: "success"});
         }
     })
+});
+
+
+router.post('/pin', (req, res) =>{
+
+   try {
+      console.log(req.body.pin);
+       const pins = req.body.pin;
+       console.log(pins);
+       let sql = `SELECT * FROM users WHERE pin =`+ pins;
+
+       db.query(sql, (err, results, fields) =>{
+           if(err){
+               return console.error(err.message);
+           }else{
+               res.json(results);
+           }
+       })
+
+   } catch (error) {
+        return res.status(500).json({ message: error.message})
+   }
 })
 
-module.exports = router;     
+module.exports = router;
