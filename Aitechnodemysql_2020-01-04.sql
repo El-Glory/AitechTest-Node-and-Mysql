@@ -78,18 +78,9 @@ VALUES
 	(36,'James','elgloryoriabure@gmail.com','349347','517009563'),
 	(37,'James','elgloryoriabure@gmail.com','349347','8869071023'),
 	(38,'James','elgloryoriabure@gmail.com','349347','2772020757'),
-	(39,NULL,NULL,NULL,'1263683825'),
-	(40,NULL,NULL,NULL,'1149981729'),
-	(41,NULL,NULL,NULL,'2748433112'),
-	(42,NULL,NULL,NULL,'3138221276'),
-	(43,NULL,NULL,NULL,'7913159480'),
-	(44,NULL,NULL,NULL,'6471750695'),
-	(45,NULL,NULL,NULL,'2892842131'),
-	(46,NULL,NULL,NULL,'6382288522'),
-	(47,NULL,NULL,NULL,'3031670122'),
-	(48,'djvnvkn','elgloryoriabure@gmail.com','34938084','78370633'),
-	(49,'djvnvkn','elgloryoriabure@gmail.com','34938084','8991374455'),
-	(50,'djvndv','elgloryoriabure@gmail.com','2480803','5604815261');
+	(39,'djvnvkn','elgloryoriabure@gmail.com','34938084','78370633'),
+	(40,'djvnvkn','elgloryoriabure@gmail.com','34938084','8991374455'),
+	(41,'djvndv','elgloryoriabure@gmail.com','2480803','5604815261');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
