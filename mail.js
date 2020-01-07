@@ -6,8 +6,8 @@ function sendMail(email, pin) {
     secure: false,
     port: 25,
     auth: {
-      user: 'elgloryoriabure@gmail.com',
-      pass: 'elgloriabs'
+      user: 'youremail@gmail.com',
+      pass: 'yourpassword'
     },
     tls:{
       rejectUnauthorized: false
